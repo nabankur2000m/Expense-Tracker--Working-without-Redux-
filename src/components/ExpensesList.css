@@ -1,0 +1,85 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0; 
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+    font-weight: 500;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.edit-btn {
+    background-color: #4CAF50; 
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #45a049; 
+}
+
+.delete-btn {
+    background-color: #f44336; 
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #d32f2f;
+}
+
+
+
+@media (max-width: 768px) {
+    th, td {
+        padding: 10px;
+    }
+}
+@media (max-width: 600px) {
+    td, th {
+        padding: 8px;
+    }
+
+    .hide-on-mobile {
+        display: none;
+    }
+}
+button {
+    padding: 5px 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+button:hover {
+    background-color: darkred;
+}

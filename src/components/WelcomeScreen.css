@@ -1,0 +1,80 @@
+.welcome-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f9;
+  }
+  
+  .welcome-container {
+    width: 90%;
+    max-width: 600px;
+    background: #fff; 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logout-btn {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .logout-btn:hover {
+    background-color: #c82333; 
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin: 10px;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .verify-btn {
+    background-color: #17a2b8; 
+  }
+  
+  .verify-btn:hover {
+    background-color: #138496; 
+  }
+  
+  .add-expense-btn {
+    background-color: #28a745;
+  }
+  
+  .add-expense-btn:hover {
+    background-color: #218838; 
+  }
+  
+  .complete-profile-btn {
+    background-color: #ffc107;
+  }
+  
+  .complete-profile-btn:hover {
+    background-color: #e0a800; 
+  }
+  
+  .btn:hover {
+    transform: translateY(-3px); 
+  }
+  
+  .btn:active {
+    transform: translateY(-1px);
+  }
+  
