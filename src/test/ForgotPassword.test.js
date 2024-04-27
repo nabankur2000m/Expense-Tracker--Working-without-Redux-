@@ -6,8 +6,7 @@ import ForgotPassword from './ForgotPassword';
 describe('ForgotPassword', () => {
   test('sends a reset password link', async () => {
     render(<ForgotPassword />);
-    const emailField = screen.getByPlaceholderText('Enter the email with which you have registered.');
-    userEvent.type(emailField, 'test@example.com');
+    userEvent.type(screen.getByPlaceholderText('Enter the email with which you have registered.'), 'email@example.com');
     userEvent.click(screen.getByRole('button', { name: 'Send Link' }));
 
     await waitFor(() => {

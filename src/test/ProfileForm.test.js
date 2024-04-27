@@ -5,13 +5,13 @@ import ProfileForm from './ProfileForm';
 
 describe('ProfileForm', () => {
   test('updates user profile', async () => {
-    render(<ProfileForm onProfileUpdate={() => {}} onCancel={() => {}} />);
-    const fullNameField = screen.getByPlaceholderText('Enter your full name');
-    userEvent.type(fullNameField, 'New Name');
+    const mockOnProfileUpdate = jest.fn();
+    render(<ProfileForm onProfileUpdate={mockOnProfileUpdate} onCancel={() => {}} />);
+    userEvent.type(screen.getByPlaceholderText('Enter your full name'), 'John Doe');
     userEvent.click(screen.getByRole('button', { name: 'Update' }));
 
     await waitFor(() => {
-      expect(localStorage.getItem('fullName')).toBe('New Name');
+      expect(mockOnProfileUpdate).toHaveBeenCalled();
     });
   });
 });

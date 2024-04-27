@@ -1,21 +1,25 @@
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ExpensesList from './ExpensesList';
 
 describe('ExpensesList', () => {
-  test('displays and updates an expense list', async () => {
+  test('displays expenses', () => {
     render(<ExpensesList />);
-    // Mock initial fetch and simulate edit interaction
-    await waitFor(() => {
-      expect(screen.getByText('Rs.50')).toBeInTheDocument();
-    });
-    userEvent.click(screen.getByRole('button', { name: 'Edit' }));
-    userEvent.type(screen.getByDisplayValue('50'), '100');
-    userEvent.click(screen.getByRole('button', { name: 'Submit' }));
+    expect(screen.getByText('Groceries')).toBeInTheDocument();
+  });
 
-    await waitFor(() => {
-      expect(screen.getByText('Rs.100')).toBeInTheDocument();
-    });
+  test('edits an expense', () => {
+    render(<ExpensesList />);
+    userEvent.click(screen.getByText('Edit'));
+    userEvent.type(screen.getByDisplayValue('Groceries'), 'Updated Groceries');
+    userEvent.click(screen.getByRole('button', { name: 'Submit' }));
+    expect(screen.getByText('Updated Groceries')).toBeInTheDocument();
+  });
+
+  test('deletes an expense', () => {
+    render(<ExpensesList />);
+    userEvent.click(screen.getByText('Delete'));
+    expect(screen.queryByText('Groceries')).toBeNull();
   });
 });

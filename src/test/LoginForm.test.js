@@ -4,28 +4,25 @@ import userEvent from '@testing-library/user-event';
 import LoginForm from './LoginForm';
 
 describe('LoginForm', () => {
-  test('submits login form data', async () => {
+  test('successful login', async () => {
     render(<LoginForm />);
-    const emailField = screen.getByPlaceholderText('Email');
-    const passwordField = screen.getByPlaceholderText('Password');
-    userEvent.type(emailField, 'user@example.com');
-    userEvent.type(passwordField, 'password');
+    userEvent.type(screen.getByPlaceholderText('Email'), 'user@example.com');
+    userEvent.type(screen.getByPlaceholderText('Password'), 'password123');
     userEvent.click(screen.getByRole('button', { name: 'Login' }));
 
     await waitFor(() => {
-      expect(localStorage.getItem('token')).toBeDefined();
+      expect(screen.getByText('Welcome back!')).toBeInTheDocument();
     });
   });
 
-  test('displays error on failed login', async () => {
+  test('login failure', async () => {
     render(<LoginForm />);
-    const emailField = screen.getByPlaceholderText('Email');
-    userEvent.type(emailField, 'incorrect@example.com');
+    userEvent.type(screen.getByPlaceholderText('Email'), 'user@example.com');
     userEvent.type(screen.getByPlaceholderText('Password'), 'wrongpassword');
     userEvent.click(screen.getByRole('button', { name: 'Login' }));
 
     await waitFor(() => {
-      expect(screen.getByText('An unknown error occurred.')).toBeInTheDocument();
+      expect(screen.getByText('Invalid credentials')).toBeInTheDocument();
     });
   });
 });
